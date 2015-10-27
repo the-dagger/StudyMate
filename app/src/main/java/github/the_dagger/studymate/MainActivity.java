@@ -1,13 +1,16 @@
 package github.the_dagger.studymate;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +21,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        CardView card1 = (CardView) findViewById(R.id.card_view);
+        //card1.getSolidColor();
+
+        Button okButton = (Button) findViewById(R.id.buttonOk);
+        okButton.setBackgroundColor(card1.getSolidColor());
+        if(okButton.isPressed())
+            okButton.setBackgroundColor(Color.RED);
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+    }
+
+    public void gone(View view){
+        CardView card1 = (CardView) findViewById(R.id.card_view);
+        card1.setVisibility(View.GONE);
     }
 
     @Override
